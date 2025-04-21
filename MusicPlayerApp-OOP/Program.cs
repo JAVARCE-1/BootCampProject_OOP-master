@@ -21,7 +21,7 @@ class Program
         // Create an AudioBook object
         var audioBook1 = new AudioBook("The Hobbit", "J.R.R. Tolkien", "Rob Inglis", TimeSpan.FromHours(11.1));
 
-        var video1 = new Video("Terror",".wmp","Los fantasmas", TimeSpan.FromHours(1.5));
+        var video1 = new Video("Terror",".wmp","Viernes 13", TimeSpan.FromHours(1.5));
         var video2 = new Video("Comedia", ".mp4", "Los 3 chiflados", TimeSpan.FromHours(1.6));
 
         // --- Using the Player ---

@@ -9,11 +9,13 @@ namespace MusicPlayerApp_OOP
     public class Video : MediaItem
 
     {
+        //atributos
         private string _genero;
         private string _formato;
         public string Genero { get => _genero; set => _genero = value; }
         public string Formato { get => _formato; set => _formato = value; }
 
+        //constructor
         public Video(string genero,
                      string formato,
                      string title,
@@ -26,12 +28,9 @@ namespace MusicPlayerApp_OOP
 
             _genero = genero;
             _formato = formato;
-
         }
-
+        //metodos
         public override string CreatorInfo => _genero;
-
-
 
         public override void Play()
         {
@@ -44,7 +43,6 @@ namespace MusicPlayerApp_OOP
             Console.WriteLine($"  Genero: {_genero}");
             Console.WriteLine($"  Formato: {_formato}");
         }
-
 
         public override string ToString()
         {
