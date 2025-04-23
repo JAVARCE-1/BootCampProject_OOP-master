@@ -8,6 +8,7 @@ public class SistemaInventario // Heredar esa interfaz para sobrescribir esos me
     private List<Empleado> _empleados = new List<Empleado>();
     private List<Producto> _productos = new List<Producto>();
     private List<MovimientoStock> _movimientos = new List<MovimientoStock>();
+    private List<CategoriaProducto> _categoriaProducto = new List<CategoriaProducto>();
     
     // Metodo para agregar un tipo empleado
     public void AgregarTipoEmpleado(TipoEmpleado tipoEmpleado)
@@ -55,4 +56,10 @@ public class SistemaInventario // Heredar esa interfaz para sobrescribir esos me
     {
         return _productos.FirstOrDefault(t => t.Id == id);
     }
+
+    public List<CategoriaProducto> ObtenerCategoriaProductos()
+    {
+        return _categoriaProducto.ToList();
+    }
+
 }

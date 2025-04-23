@@ -230,7 +230,7 @@ class Program
                     AgregarProducto(sistema);
                     break;
                 case "2":
-                    //MostrarProductos(sistema);
+                    MostrarProductos(sistema);
                     break;
                 case "3":
                     //MostrarProductosPorId(sistema);
@@ -245,18 +245,71 @@ class Program
         }
     }
 
+    private static void MostrarProductos(SistemaInventario sistema)
+    {
+        var productos = sistema.ObtenerProductos();
+
+        // Validar si no hay empleados
+        if (productos.Count == 0)
+        {
+            Console.WriteLine("No hay ningun Producto");
+            return;
+        }
+
+        Console.WriteLine("Lista de Productos");
+        Console.WriteLine("ID\tSku\tNombre\tCategoria\tPrecio\tStock\tFecha Creacion\t\t...");
+        Console.WriteLine("-------------------------------------");
+        foreach (var producto in productos)
+        {
+            Console.WriteLine($"{producto.Id}\t{producto.Sku}\t{producto.Nombre}\t{producto.Categoria}\t\t{producto.Precio}\t{producto.Stock}\t{producto.FechaCreacion}");
+        }
+    }
+
     private static void AgregarProducto(SistemaInventario sistema)
     {
         Console.WriteLine("\nAgregar un nuevo Empleado: ");
 
+        Console.WriteLine("SKU del Producto: ");
+        string sku = Console.ReadLine();
+
         Console.WriteLine("Nombre del Producto: ");
         string nombres = Console.ReadLine();
+
 
         Console.WriteLine("Precio del Producto: ");
         decimal precio = Convert.ToDecimal(Console.ReadLine());
 
-        Console.WriteLine("Categoria del Producto: ");
-        //var tiposEmpleados = sistema.ObtenerTipoEmpleados();
+        Console.WriteLine("Stock del Producto: ");
+        int stock = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Categorias disponibles: ");
+        var categoriaProducto = sistema.ObtenerCategoriaProductos();
+        for (int i = 0; i < categoriaProducto.Count; i++)
+        {
+            Console.WriteLine("{0}. {1}", i + 1, categoriaProducto[i]);
+        }
+        Console.WriteLine("Categorias del Producto: ");
+        //if (categoriaProducto.Count == 0)
+        //{
+        //    Console.WriteLine("No hay ninguna Categoria");
+        //    return;
+        //}
+
+
+
+        var producto = new Producto
+        {
+            Nombre = nombres,
+            Sku = sku,
+            Categoria = CategoriaProducto.LAPTOPS,
+            Precio = precio,
+            Stock = stock,
+            FechaCreacion = new DateTime(1900, 1, 1),
+        };
+
+        sistema.AgregarProducto(producto);
+        Console.WriteLine($"\n Producto agregado con el ID: {producto.Id}");
+
     }
 
     static void CargarDatosIniciales(SistemaInventario sistema)
