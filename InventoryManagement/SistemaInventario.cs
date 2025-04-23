@@ -41,7 +41,18 @@ public class SistemaInventario // Heredar esa interfaz para sobrescribir esos me
     {
         return _empleados.FirstOrDefault(t => t.Id == id);
     }
-    
+
     // Agregar el resto de metodos
-    
+    public void AgregarProducto(Producto producto)
+    {
+        _productos.Add(producto);
+    }
+    public List<Producto> ObtenerProductos()
+    {
+        return _productos.ToList();
+    }
+    public Producto ObtenerProductoPorId(int id)
+    {
+        return _productos.FirstOrDefault(t => t.Id == id);
+    }
 }

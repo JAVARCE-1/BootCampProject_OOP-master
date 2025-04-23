@@ -10,7 +10,7 @@ class Program
 
         SistemaInventario sistema = new SistemaInventario();
         CargarDatosIniciales(sistema); // Yo ya tengo cargado los datos de las listas que estan en Sistema Inventario
-        
+     
         // Menu de entrada
         bool salir = false;
 
@@ -35,7 +35,7 @@ class Program
                         GestionEmpleados(sistema);
                         break;
                     case 2:
-                        // GestionProductos(sistema);
+                        GestionProductos(sistema);
                         break;
                     case 3:
                         // MovimientosStock(sistema);
@@ -84,7 +84,7 @@ class Program
                     MostrarEmpleadoPorId(sistema);
                     break;
                 case "4":
-                    // MostrarTipoEmpleados(sistema);
+                    MostrarTipoEmpleados(sistema);
                     break;
                 case "0":
                     regresar = true;
@@ -93,6 +93,27 @@ class Program
                     Console.WriteLine("Opcion invalida.");
                     break;
             }
+        }
+    }
+
+    private static void MostrarTipoEmpleados(SistemaInventario sistema)
+    {
+        var tiposEmpleados = sistema.ObtenerTipoEmpleados();
+
+        // Validar si no hay tipoEmpleado
+        if (tiposEmpleados.Count == 0)
+        {
+            Console.WriteLine("No hay ningun Tipo de Empleado");
+            return;
+        }
+
+        Console.WriteLine("");
+        Console.WriteLine("Listado de Tipo de empleados");
+        Console.WriteLine("ID\tNombres\t\tDescripcion\t");
+        Console.WriteLine("-------------------------------------");
+        foreach (var tipo in tiposEmpleados)
+        {
+            Console.WriteLine($"{tipo.Id}\t{tipo.Nombre}\t{tipo.Descripcion} ");
         }
     }
 
@@ -186,6 +207,56 @@ class Program
         {
             Console.WriteLine($"{empleado.Id}\t{empleado.Nombres}\t{empleado.TipoEmpleado.Nombre}\t{empleado.FechaIngreso}\t{empleado.Edad}\t{empleado.Genero}");
         }
+    }
+
+    static void GestionProductos(SistemaInventario sistema)
+    {
+        bool regresar = false;
+        while (!regresar)
+        {
+            Console.WriteLine("\nGestion de Productos: ");
+            Console.WriteLine("\nSeleccione una opcion: ");
+            Console.WriteLine("1. Agregar un producto");
+            Console.WriteLine("2. Ver lista de productos");
+            Console.WriteLine("3. Ver Producto por Id");
+            //Console.WriteLine("4. Mostrar lista de tipos de empleados");
+            Console.WriteLine("0. Regresar al menu principal");
+
+            string opcion = Console.ReadLine();
+
+            switch (opcion)
+            {
+                case "1":
+                    AgregarProducto(sistema);
+                    break;
+                case "2":
+                    //MostrarProductos(sistema);
+                    break;
+                case "3":
+                    //MostrarProductosPorId(sistema);
+                    break;
+                case "0":
+                    regresar = true;
+                    break;
+                default:
+                    Console.WriteLine("Opción invalida.");
+                    break;
+            }
+        }
+    }
+
+    private static void AgregarProducto(SistemaInventario sistema)
+    {
+        Console.WriteLine("\nAgregar un nuevo Empleado: ");
+
+        Console.WriteLine("Nombre del Producto: ");
+        string nombres = Console.ReadLine();
+
+        Console.WriteLine("Precio del Producto: ");
+        decimal precio = Convert.ToDecimal(Console.ReadLine());
+
+        Console.WriteLine("Categoria del Producto: ");
+        //var tiposEmpleados = sistema.ObtenerTipoEmpleados();
     }
 
     static void CargarDatosIniciales(SistemaInventario sistema)
