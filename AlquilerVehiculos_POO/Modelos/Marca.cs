@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlquilerVehiculos_POO.Modelos
 {
-	enum Marca
+	public enum Marca
 	{
 		Ford,
 		Nissan,
