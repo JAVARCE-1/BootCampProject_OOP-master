@@ -96,9 +96,7 @@ namespace AlquilerVehiculos_POO
 
         static void CargarDatosIniciales(SistemaAlquiler sistema)
         {
-            // Agregar tipos de empleado
-            //var tipoAdmin = new TipoEmpleado { Nombre = "Administrador", Descripcion = "Acceso total al sistema" };
-
+            // Agregar 
             var vehiculo = new Vehiculo
             {
                 Marca = Marca.Ford,

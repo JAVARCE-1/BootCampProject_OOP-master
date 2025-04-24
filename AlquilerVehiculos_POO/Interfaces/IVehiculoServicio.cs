@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlquilerVehiculos_POO.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace AlquilerVehiculos_POO.Interfaces
 {
     interface IVehiculoServicio
     {
-        void AgregarVehiculo();
-        void MostrarVehiculo();
+        void AgregarVehiculo(SistemaAlquiler sistema);
+        void MostrarVehiculo(SistemaAlquiler sistema);
     }
 }
