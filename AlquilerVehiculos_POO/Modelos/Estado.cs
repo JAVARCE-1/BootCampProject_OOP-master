@@ -9,6 +9,6 @@ namespace AlquilerVehiculos_POO.Modelos
 	public enum Estado
 	{
         Activo,
-        Inactivo
+        Inactivo,
     }
 }

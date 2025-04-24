@@ -31,5 +31,11 @@ namespace AlquilerVehiculos_POO.Modelos
         {
             return _cliente.ToList();
         }
+
+        public Vehiculo ObtenerVehiculoPorId(int id)
+        {
+            return _vehiculo.FirstOrDefault(t => t.Id == id);
+        }
+
     }
 }
