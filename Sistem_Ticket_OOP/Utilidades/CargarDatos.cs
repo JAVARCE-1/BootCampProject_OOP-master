@@ -21,6 +21,19 @@ namespace Sistem_Ticket_OOP.Utilidades
                 CreadteDate = new DateTime(2025, 1, 1),
                 UpdateteDate =  new DateTime(2025, 1, 1),
             };
+            sistema.AgregarTickets(ticket1);
+
+            var ticket2 = new Ticket
+            {
+                Title = "Error al enviar correo",
+                Description = "No se puede enviar correo a personas externas",
+                Status = TicketStatus.Activo,
+                Priority = Priority.Alta,
+                ReportBy = "Carlos de RRHH",
+                CreadteDate = new DateTime(2025, 1, 1),
+                UpdateteDate = new DateTime(2025, 1, 1),
+            };
+            sistema.AgregarTickets(ticket2);
 
             var developer = new Developer
             {
@@ -30,6 +43,7 @@ namespace Sistem_Ticket_OOP.Utilidades
                 //LISTA TICKEET
 
             };
+            sistema.AgregarDeveloper(developer);
         }
     }
 
