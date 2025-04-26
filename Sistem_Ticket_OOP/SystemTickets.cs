@@ -31,6 +31,7 @@ namespace Sistem_Ticket_OOP
             return _ticket.FirstOrDefault(t => t.Id == ticketId)!;
         }
 
+
         public void AgregarDeveloper(Developer developer)
         {
             _developer.Add(developer);
@@ -53,12 +54,23 @@ namespace Sistem_Ticket_OOP
             {
                 ticket.AssignedTo = developer;
                 ticket.UpdateteDate = DateTime.Today;
+                ticket.Status = TicketStatus.Asignado; 
             }
         }
 
         public List<Ticket> ObtenerTicketPorPrioridad(Priority prioridad)
         {
             return _ticket.Where(m => m.Priority == prioridad).ToList();
+        }
+
+        public void UpdateTicketRealizado(int ticketId)
+        {
+            var ticket = _ticket.FirstOrDefault(p => p.Id == ticketId);
+            if (ticket != null)
+            {
+                ticket.UpdateteDate = DateTime.Today;
+                ticket.Status = TicketStatus.Realizado;
+            }
         }
 
     }

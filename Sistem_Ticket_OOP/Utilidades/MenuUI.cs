@@ -63,7 +63,8 @@ namespace Sistem_Ticket_OOP.Utilidades
                 Console.WriteLine("\nSeleccione una opcion: ");
                 Console.WriteLine("1. Agregar un Developer");
                 Console.WriteLine("2. Ver lista de Developer");
-                Console.WriteLine("3. Ver Developer por Id");         
+                Console.WriteLine("3. Ver Developer por Id");
+                Console.WriteLine("4. Reporte de Developers con sus IdTickets");
                 Console.WriteLine("0. Regresar al menu principal");
 
                 string opcion = Console.ReadLine();
@@ -80,7 +81,7 @@ namespace Sistem_Ticket_OOP.Utilidades
                         //servicio.MostrarEmpleadoPorId(sistema);
                         break;
                     case "4":
-                        // MostrarTipoEmpleados(sistema);
+                         servicio.ReporteDevelopersConTicketID(sistema);
                         break;
                     case "0":
                         regresar = true;
@@ -103,7 +104,8 @@ namespace Sistem_Ticket_OOP.Utilidades
                 Console.WriteLine("1. Agregar un Ticket");
                 Console.WriteLine("2. Ver lista de Ticket");
                 Console.WriteLine("3. Ver Developer por Id");
-                Console.WriteLine("4. Ver Reporte Tickets por Prioridad");
+                Console.WriteLine("4. Modificar Tickets a Realizado");
+                Console.WriteLine("5. Ver Reporte Tickets por Prioridad");
                 Console.WriteLine("0. Regresar al menu principal");
 
                 string opcion = Console.ReadLine();
@@ -120,6 +122,9 @@ namespace Sistem_Ticket_OOP.Utilidades
                         servicio.AsignarTicket(sistema);
                         break;
                     case "4":
+                        servicio.ActualizarStatusTicket(sistema);
+                        break;
+                    case "5":
                         servicio.ReporteTicketPriority(sistema);
                         break;
                     case "0":

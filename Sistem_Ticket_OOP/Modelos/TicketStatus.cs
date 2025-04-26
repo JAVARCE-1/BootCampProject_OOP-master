@@ -8,8 +8,9 @@ namespace Sistem_Ticket_OOP.Modelos
 {
 	public enum TicketStatus
 	{
-		Activo,
-		Inactivo
+		Pendiente,
+		Asignado,
+		Realizado
 
 	}
 }

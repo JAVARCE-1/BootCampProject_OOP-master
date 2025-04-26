@@ -45,7 +45,25 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
 
         public void ActualizarStatusTicket(SystemTickets sistema)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Dame el id del Ticket: ");
+            int ticketId = int.Parse(Console.ReadLine());
+
+            if (ticketId < 0)
+            {
+                throw new ArgumentException("El id del Developer debe ser mayor que 0");
+            }
+
+            var tickets = sistema.ObtenerTicketPorId(ticketId);
+            if (tickets == null)
+            {
+                Console.WriteLine("No hay ningun Ticket");
+                return;
+            }
+
+            sistema.UpdateTicketRealizado(ticketId);
+            Console.WriteLine($"\n Ticket con el ID: {tickets.Id} fue realizado");
+
+
         }
 
         public void AgregarTicket(SystemTickets sistema)
@@ -72,7 +90,7 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
                 Title = title,
                 Description = description,
                 Category = categoryTicket,
-                Status = TicketStatus.Activo,
+                Status = TicketStatus.Pendiente,
                 Priority = priority,
                 ReportBy = reportBy,
                 CreadteDate = DateTime.Today,
@@ -91,7 +109,6 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
         {
             var tickets = sistema.ObtenerTickets();
 
-            // Validar si no hay developers
             if (tickets.Count == 0)
             {
                 Console.WriteLine("No hay ningun Ticket");

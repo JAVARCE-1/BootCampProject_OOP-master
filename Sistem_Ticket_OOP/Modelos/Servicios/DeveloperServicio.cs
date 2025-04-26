@@ -97,6 +97,35 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
             }
         }
 
+        void IDeveloperServicio.ReporteDevelopersConTicketID(SystemTickets sistema)
+        {
+            var developers = sistema.ObtenerDevelopers();
 
+            // Validar si no hay developers
+            if (developers.Count == 0)
+            {
+                Console.WriteLine("No hay ningun Developer");
+                return;
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("== Lista de Developers con sus IdTickets ==");
+            Console.WriteLine("----------------------------------------------------------------------------------------");
+            Console.WriteLine("Id_Developer\tNombre\t\tSeniority\tID_Ticket\tTicket_Title ");
+            Console.WriteLine("----------------------------------------------------------------------------------------");
+            foreach (var developer in developers)
+            {
+                if (developer.Ticket.Count > 0)
+                {
+                    Console.Write($"{developer.Id}\t\t{developer.Nombre}\t{developer.Seniority}   ");
+                    foreach (var ticket in developer.Ticket)
+                    {
+                        Console.Write($"\t{ticket.Id} \t\t{ticket.Title} ");
+                    }
+                    Console.WriteLine("");
+                }
+
+            }
+        }
     }
 }
