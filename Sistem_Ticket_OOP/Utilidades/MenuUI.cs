@@ -35,7 +35,7 @@ namespace Sistem_Ticket_OOP.Utilidades
                             GestionTickets(sistema);
                             break;
                         case 3:
-                            //MovimientosStock(sistema);
+                            //MovimientosTickets(sistema);
 
                             break;
                         case 0:
@@ -103,6 +103,7 @@ namespace Sistem_Ticket_OOP.Utilidades
                 Console.WriteLine("1. Agregar un Ticket");
                 Console.WriteLine("2. Ver lista de Ticket");
                 Console.WriteLine("3. Ver Developer por Id");
+                Console.WriteLine("4. Ver Reporte Tickets por Prioridad");
                 Console.WriteLine("0. Regresar al menu principal");
 
                 string opcion = Console.ReadLine();
@@ -116,10 +117,10 @@ namespace Sistem_Ticket_OOP.Utilidades
                         servicio.MostrarTicket(sistema);
                         break;
                     case "3":
-                        //servicio.MostrarEmpleadoPorId(sistema);
+                        servicio.AsignarTicket(sistema);
                         break;
                     case "4":
-                        // MostrarTipoEmpleados(sistema);
+                        servicio.ReporteTicketPriority(sistema);
                         break;
                     case "0":
                         regresar = true;

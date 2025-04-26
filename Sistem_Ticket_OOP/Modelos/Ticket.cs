@@ -20,8 +20,8 @@ namespace Sistem_Ticket_OOP.Modelos
         public DateTime CreadteDate { get; set; }
         public DateTime UpdateteDate { get; set; }
 
-        //public Developer AssignedTo { get; set; }
-        //public List<> Coment { get; set; }
+        public Developer AssignedTo { get; set; }
+
 
 
 

@@ -8,7 +8,47 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
 {
     public class TicketServicio : ITicketServicio
     {
-        void ITicketServicio.AgregarTicket(SystemTickets sistema)
+        public void AsignarTicket(SystemTickets sistema)
+        {
+            Console.WriteLine("Dame el id del Ticket: ");
+            int ticketId = int.Parse(Console.ReadLine());
+
+            if (ticketId < 0)
+            {
+                throw new ArgumentException("El id del Ticket debe ser mayor que 0");
+            }
+
+            var ticket = sistema.ObtenerTicketPorId(ticketId);
+            if (ticket == null)
+            {
+                throw new ArgumentException("El id del Ticket no esta registrado");
+            }
+
+            Console.WriteLine("Dame el id del Developer: ");
+            int developerId = int.Parse(Console.ReadLine());
+
+            //usuario
+            if (developerId < 0)
+            {
+                throw new ArgumentException("El id del Developer debe ser mayor que 0");
+            }
+            var developer = sistema.ObtenerDeveloperoPorId(developerId);
+            if (developer == null)
+            {
+                throw new ArgumentException("El id del Developer no esta registrado");
+            }
+
+            sistema.AsignarUsuarioTicket(developer, ticketId);
+            Console.WriteLine($"\n El Ticket con el ID: {ticketId}  fue asignado al Developer {developer.Nombre}");
+
+        }
+
+        public void ActualizarStatusTicket(SystemTickets sistema)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AgregarTicket(SystemTickets sistema)
         {
             Console.WriteLine("\nAgregar un nuevo Ticket: ");
 
@@ -42,7 +82,12 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
             Console.WriteLine($"\n Ticket agregado con el ID: {tickets.Id}");
         }
 
-        void ITicketServicio.MostrarTicket(SystemTickets sistema)
+        public void EliminarTicket(SystemTickets sistema)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MostrarTicket(SystemTickets sistema)
         {
             var tickets = sistema.ObtenerTickets();
 
@@ -64,9 +109,61 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
             }
         }
 
-        void ITicketServicio.MostrarTicketPorId(SystemTickets sistema)
+        public void MostrarTicketPorId(SystemTickets sistema)
         {
             throw new NotImplementedException();
+        }
+
+        public void ReporteTicketPorCreacion(SystemTickets sistema)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReporteTicketPorDeveloper(SystemTickets sistema)
+        {
+            Console.WriteLine("Dame el id del Developer: ");
+            int idDeveloper = int.Parse(Console.ReadLine());
+
+            if (idDeveloper < 0)
+            {
+                throw new ArgumentException("El id del Developer debe ser mayor que 0");
+            }
+
+            var listadoTicketUsuarios = sistema.ObtenerTicketPorUsuarioId(idDeveloper);
+            if (listadoTicketUsuarios.Count == 0)
+            {
+                Console.WriteLine("No hay ningun Ticket");
+                return;
+            }
+
+            Console.WriteLine("Lista de Tickets por usuario asignado");
+            Console.WriteLine("ID\t\tTitulo\tCategoria\tStatus\tUsuario Asignado\tRole");
+            Console.WriteLine("-------------------------------------");
+            foreach (var lista in listadoTicketUsuarios)
+            {
+                Console.WriteLine($"{lista.Id}\t{lista.Title}\t{lista.Category}\t{lista.Status}\t{lista.AssignedTo.Nombre}\t{lista.AssignedTo.Role}");
+            }
+        }
+
+        public void ReporteTicketPriority(SystemTickets sistema)
+        {
+            Console.WriteLine("-> Ingrese Priority del Ticket ( 0=Baja ó 1=Medio ó 2=Alta): ");
+            Priority priority = (Priority)Convert.ToInt32(Console.ReadLine());
+
+            var tickets = sistema.ObtenerTicketPorPrioridad(priority);
+            Console.WriteLine("");
+            Console.WriteLine("== Lista de Tickets por Prioridad ==");
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("ID\tTitle\t\t\t\tReported By\t\tStatus\t\tPriority\tCategory\tCreatedDated");
+            Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------");
+            foreach (var ticket in tickets)
+            {
+                Console.WriteLine($"{ticket.Id}\t{ticket.Title}\t\t\t{ticket.ReportBy} \t{ticket.Status}\t\t{ticket.Priority} \t\t{ticket.Category} \t{ticket.CreadteDate}  ");
+            }
+
+
+
+
         }
     }
 }
