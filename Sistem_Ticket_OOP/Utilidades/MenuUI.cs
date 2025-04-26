@@ -59,12 +59,11 @@ namespace Sistem_Ticket_OOP.Utilidades
             IDeveloperServicio servicio = new DeveloperServicio();
             while (!regresar)
             {
-                Console.WriteLine("\nGestion de Empleados: ");
+                Console.WriteLine("\nGestion de Developer: ");
                 Console.WriteLine("\nSeleccione una opcion: ");
-                Console.WriteLine("1. Agregar un empleado");
-                Console.WriteLine("2. Ver lista de empleados");
-                Console.WriteLine("3. Ver empleado por Id");
-                Console.WriteLine("4. Mostrar lista de tipos de empleados");
+                Console.WriteLine("1. Agregar un Developer");
+                Console.WriteLine("2. Ver lista de Developer");
+                Console.WriteLine("3. Ver Developer por Id");         
                 Console.WriteLine("0. Regresar al menu principal");
 
                 string opcion = Console.ReadLine();

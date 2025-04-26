@@ -1,4 +1,6 @@
-﻿namespace Sistem_Ticket_OOP
+﻿using Sistem_Ticket_OOP.Utilidades;
+
+namespace Sistem_Ticket_OOP
 {
      class Program
     {
@@ -6,7 +8,7 @@
         {
             Console.WriteLine("=== Inventory Management System ===\n");
             SystemTickets sistema = new SystemTickets();
-            CargaDatos.CargarDatosIniciales(sistema);
+            CargarDatos.CargarDatosIniciales(sistema);
             MenuUI.CargarMenuPrincipal(sistema);
         }
     }
