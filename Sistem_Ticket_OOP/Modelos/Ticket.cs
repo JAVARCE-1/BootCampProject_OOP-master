@@ -13,14 +13,14 @@ namespace Sistem_Ticket_OOP.Modelos
         public string Title { get; set; }
         public string Description { get; set; }
 
-        public Status Status { get; set; }
+        public TicketStatus Status { get; set; }
         public Priority Priority { get; set; }
         public TicketCategory Category { get; set; }
         public string ReportBy { get; set; }
         public DateTime CreadteDate { get; set; }
         public DateTime UpdateteDate { get; set; }
 
-        public Developer AssignedTo { get; set; }
+        //public Developer AssignedTo { get; set; }
         //public List<> Coment { get; set; }
 
 

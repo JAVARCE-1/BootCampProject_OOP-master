@@ -13,8 +13,8 @@ namespace Sistem_Ticket_OOP.Modelos
         public string Role { get; set; }
         public string Seniority { get; set; }
         public Ticket Ticket { get; set; }
- 
 
+ 
 
         public Developer()
         {

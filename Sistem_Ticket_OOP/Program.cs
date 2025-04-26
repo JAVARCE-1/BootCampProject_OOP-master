@@ -1,10 +1,13 @@
 ﻿namespace Sistem_Ticket_OOP
 {
-    internal class Program
+     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("=== Inventory Management System ===\n");
+            SystemTickets sistema = new SystemTickets();
+            CargaDatos.CargarDatosIniciales(sistema);
+            MenuUI.CargarMenuPrincipal(sistema);
         }
     }
 }

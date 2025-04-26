@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistem_Ticket_OOP.Modelos
 {
-	public enum Status
+	public enum TicketStatus
 	{
 		Activo,
 		Inactivo
