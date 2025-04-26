@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Sistem_Ticket_OOP.Modelos
 {
-    public enum   Priority
+    public enum Genero
     {
-        Baja,
-        Media,
-        Alta,
-        
-    }
+        Masculino,
+        Femenino
+    }  
 }

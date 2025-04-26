@@ -32,7 +32,7 @@ namespace Sistem_Ticket_OOP.Utilidades
                             GestionDevelopers(sistema);
                             break;
                         case 2:
-                            //GestionProductos(sistema);
+                            GestionTickets(sistema);
                             break;
                         case 3:
                             //MovimientosStock(sistema);
@@ -71,10 +71,49 @@ namespace Sistem_Ticket_OOP.Utilidades
                 switch (opcion)
                 {
                     case "1":
-                        //servicio.AgregarEmpleado(sistema);
+                        servicio.AgregarDeveloper(sistema);
                         break;
                     case "2":
-                        //servicio.MostrarEmpleados(sistema);
+                        servicio.MostrarDeveloper(sistema);
+                        break;
+                    case "3":
+                        //servicio.MostrarEmpleadoPorId(sistema);
+                        break;
+                    case "4":
+                        // MostrarTipoEmpleados(sistema);
+                        break;
+                    case "0":
+                        regresar = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opcion invalida.");
+                        break;
+                }
+            }
+        }
+
+        static void GestionTickets(SystemTickets sistema)
+        {
+            bool regresar = false;
+            ITicketServicio servicio = new TicketServicio();
+            while (!regresar)
+            {
+                Console.WriteLine("\nGestion de Tickets: ");
+                Console.WriteLine("\nSeleccione una opcion: ");
+                Console.WriteLine("1. Agregar un Ticket");
+                Console.WriteLine("2. Ver lista de Ticket");
+                Console.WriteLine("3. Ver Developer por Id");
+                Console.WriteLine("0. Regresar al menu principal");
+
+                string opcion = Console.ReadLine();
+
+                switch (opcion)
+                {
+                    case "1":
+                        servicio.AgregarTicket(sistema);
+                        break;
+                    case "2":
+                        servicio.MostrarTicket(sistema);
                         break;
                     case "3":
                         //servicio.MostrarEmpleadoPorId(sistema);

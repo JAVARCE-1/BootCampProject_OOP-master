@@ -8,5 +8,8 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
 {
     interface IDeveloperServicio
     {
+        void AgregarDeveloper(SystemTickets sistema);
+        void MostrarDeveloper(SystemTickets sistema);
+        void MostrarDeveloperPorId(SystemTickets sistema);
     }
 }

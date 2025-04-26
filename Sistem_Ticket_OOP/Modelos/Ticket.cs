@@ -27,7 +27,7 @@ namespace Sistem_Ticket_OOP.Modelos
 
         public Ticket()
         {
-
+            Id = _nextId++;
         }
     }
 }

@@ -9,11 +9,11 @@ namespace Sistem_Ticket_OOP.Modelos
     public abstract class Persona
 
     {
-        public string nombre { get; set; }
-        public string genero { get; set; }
-        public string dni { get; set; }
-        public string direccion { get; set; }
-        public int edad { get; set; }
+        public string Nombre { get; set; }
+        public Genero Genero { get; set; }
+        public string Dni { get; set; }
+        public string Direccion { get; set; }
+        public int Edad { get; set; }
 
     }
 }
