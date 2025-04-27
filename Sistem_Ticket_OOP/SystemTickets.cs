@@ -12,6 +12,7 @@ namespace Sistem_Ticket_OOP
     {
         private List<Developer> _developer = new List<Developer>();
         private List<Ticket> _ticket = new List<Ticket>();
+        private List<Comment> _comment = new List<Comment>();
 
         public List<Developer> ObtenerDevelopers()
         {
@@ -31,7 +32,10 @@ namespace Sistem_Ticket_OOP
             return _ticket.FirstOrDefault(t => t.Id == ticketId)!;
         }
 
-
+        public void AgregarComment(Comment comment)
+        {
+            _comment.Add(comment);
+        }
         public void AgregarDeveloper(Developer developer)
         {
             _developer.Add(developer);
@@ -42,6 +46,14 @@ namespace Sistem_Ticket_OOP
             _ticket.Add(ticket);
         }
 
+        public List<Comment> ObtenerCommentId(int commentId)
+        {
+            return _comment.Where(m => m.Id == commentId).ToList();
+        }
+        public List<Comment> ObtenerComments()
+        {
+            return _comment.ToList();
+        }
         public List<Ticket> ObtenerTicketPorUsuarioId(int developerId)
         {
             return _ticket.Where(m => m.AssignedTo.Id == developerId).ToList();

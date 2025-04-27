@@ -78,6 +78,14 @@ namespace Sistem_Ticket_OOP.Utilidades
                 Genero = Genero.Femenino,
             };
             sistema.AgregarDeveloper(developer2);
+
+            var comment1 = new Comment
+            {
+                Autor = "Autor1",
+                Text = "A continuacion se detalla el comentario acerca de la incidencia reportada....",
+                CreateDate = new DateTime(2025, 3, 2)
+            };
+            sistema.AgregarComment(comment1);
         }
     }
 

@@ -16,9 +16,10 @@ namespace Sistem_Ticket_OOP.Utilidades
             while (!salir)
             {
                 Console.WriteLine("\nMenu Principal:");
-                Console.WriteLine("1. Gestion de Developer");
+                Console.WriteLine("1. Gestion de Developers");
                 Console.WriteLine("2. Gestion de Tickets");
-                Console.WriteLine("3. Reportes");
+                Console.WriteLine("3. Gestion de Comments");
+                Console.WriteLine("4. Reportes");
                 Console.WriteLine("0. Salir");
 
                 Console.WriteLine("\n Seleccione una opción: ");
@@ -35,8 +36,10 @@ namespace Sistem_Ticket_OOP.Utilidades
                             GestionTickets(sistema);
                             break;
                         case 3:
+                            GestionComments(sistema);
+                            break;
+                        case 4:
                             ListaReportes(sistema);
-
                             break;
                         case 0:
                             salir = true;
@@ -49,6 +52,38 @@ namespace Sistem_Ticket_OOP.Utilidades
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        private static void GestionComments(SystemTickets sistema)
+        {
+            bool regresar = false;
+            ICommentServicio servicio = new CommentServicio();
+            while (!regresar)
+            {
+                Console.WriteLine("\nGestion de Comments: ");
+                Console.WriteLine("\nSeleccione una opcion: ");
+                Console.WriteLine("1. Agregar un Comment");
+                Console.WriteLine("2. Ver lista de Comment");
+                Console.WriteLine("0. Regresar al menu principal");
+
+                string opcion = Console.ReadLine();
+
+                switch (opcion)
+                {
+                    case "1":
+                        servicio.AgregarComment(sistema);
+                        break;
+                    case "2":
+                        servicio.MostrarComment(sistema);
+                        break;
+                    case "0":
+                        regresar = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opcion invalida.");
+                        break;
                 }
             }
         }
