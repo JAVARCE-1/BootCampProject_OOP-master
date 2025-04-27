@@ -21,7 +21,7 @@ namespace Sistem_Ticket_OOP.Utilidades
                 Console.WriteLine("3. Reportes");
                 Console.WriteLine("0. Salir");
 
-                Console.WriteLine("\n Seleccione una opcion: ");
+                Console.WriteLine("\n Seleccione una opción: ");
 
                 try
                 {
@@ -35,7 +35,7 @@ namespace Sistem_Ticket_OOP.Utilidades
                             GestionTickets(sistema);
                             break;
                         case 3:
-                            //MovimientosTickets(sistema);
+                            ListaReportes(sistema);
 
                             break;
                         case 0:
@@ -63,8 +63,6 @@ namespace Sistem_Ticket_OOP.Utilidades
                 Console.WriteLine("\nSeleccione una opcion: ");
                 Console.WriteLine("1. Agregar un Developer");
                 Console.WriteLine("2. Ver lista de Developer");
-                Console.WriteLine("3. Ver Developer por Id");
-                Console.WriteLine("4. Reporte de Developers con sus IdTickets");
                 Console.WriteLine("0. Regresar al menu principal");
 
                 string opcion = Console.ReadLine();
@@ -76,12 +74,6 @@ namespace Sistem_Ticket_OOP.Utilidades
                         break;
                     case "2":
                         servicio.MostrarDeveloper(sistema);
-                        break;
-                    case "3":
-                        //servicio.MostrarEmpleadoPorId(sistema);
-                        break;
-                    case "4":
-                         servicio.ReporteDevelopersConTicketID(sistema);
                         break;
                     case "0":
                         regresar = true;
@@ -103,9 +95,9 @@ namespace Sistem_Ticket_OOP.Utilidades
                 Console.WriteLine("\nSeleccione una opcion: ");
                 Console.WriteLine("1. Agregar un Ticket");
                 Console.WriteLine("2. Ver lista de Ticket");
-                Console.WriteLine("3. Ver Developer por Id");
+                Console.WriteLine("3. Asignar Ticket");
                 Console.WriteLine("4. Modificar Tickets a Realizado");
-                Console.WriteLine("5. Ver Reporte Tickets por Prioridad");
+                Console.WriteLine("5. Eliminar Ticket");
                 Console.WriteLine("0. Regresar al menu principal");
 
                 string opcion = Console.ReadLine();
@@ -125,7 +117,7 @@ namespace Sistem_Ticket_OOP.Utilidades
                         servicio.ActualizarStatusTicket(sistema);
                         break;
                     case "5":
-                        servicio.ReporteTicketPriority(sistema);
+                        servicio.EliminarTicket(sistema);
                         break;
                     case "0":
                         regresar = true;
@@ -137,6 +129,51 @@ namespace Sistem_Ticket_OOP.Utilidades
             }
         }
 
+        static void ListaReportes(SystemTickets sistema)
+        {
+            bool regresar = false;
+            ITicketServicio servicioReporte1 = new TicketServicio();
+            IDeveloperServicio servicioReporte2 = new DeveloperServicio();
+
+            while (!regresar)
+            {
+                Console.WriteLine("\nReportes: ");
+                Console.WriteLine("\nSeleccione una opcion: ");
+                Console.WriteLine("1. Tickets por Usuario");
+                Console.WriteLine("2. Tickets por fecha de Creación");
+                Console.WriteLine("3. Obtener Comentarios por Tickets");
+                Console.WriteLine("4. Usuarios con ID de sus Tickets");
+                Console.WriteLine("5. Tickets por prioridad");
+                Console.WriteLine("0. Regresar al menu principal");
+
+                string opcion = Console.ReadLine();
+
+                switch (opcion)
+                {
+                    case "1":
+                        servicioReporte1.ReporteTicketPorDeveloper(sistema);
+                        break;
+                    case "2":
+                        servicioReporte1.ReporteTicketPorCreacion(sistema);
+                        break;
+                    case "3":
+                        //servicioReporte1.(sistema);
+                        break;
+                    case "4":
+                        servicioReporte2.ReporteDevelopersConTicketID(sistema);
+                        break;
+                    case "5":
+                        servicioReporte1.ReporteTicketPriority(sistema);
+                        break;
+                    case "0":
+                        regresar = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opcion invalida.");
+                        break;
+                }
+            }
+        }
 
     }
 }
