@@ -86,6 +86,8 @@ namespace Sistem_Ticket_OOP.Utilidades
                 CreateDate = new DateTime(2025, 3, 2)
             };
             sistema.AgregarComment(comment1);
+            sistema.AddCommentTicket(ticket2, comment1); //asignaticket
+
         }
     }
 

@@ -10,5 +10,9 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
     {
         void AgregarComment(SystemTickets sistema);
         void MostrarComment(SystemTickets sistema);
+
+        void AsignarCommentTickets(SystemTickets sistema);
+
+        void ReporteCommentxTickets(SystemTickets sistema);
     }
 }

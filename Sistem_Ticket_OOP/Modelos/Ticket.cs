@@ -22,7 +22,7 @@ namespace Sistem_Ticket_OOP.Modelos
 
         public Developer AssignedTo { get; set; }
 
-
+        public List<Comment> Comment { get; set; } = new List<Comment>();
 
 
         public Ticket()

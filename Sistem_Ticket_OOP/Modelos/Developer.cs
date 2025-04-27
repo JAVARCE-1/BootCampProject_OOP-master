@@ -12,8 +12,7 @@ namespace Sistem_Ticket_OOP.Modelos
         public int Id { get; private set; }
         public string Role { get; set; }
         public string Seniority { get; set; }
-        public List<Ticket> Ticket { get; set; } = new List<Ticket>()   ;
-
+        public List<Ticket> Ticket { get; set; } = default(List<Ticket>);   
 
 
 

@@ -32,13 +32,14 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
             {
                 throw new ArgumentException("El id del Developer debe ser mayor que 0");
             }
-            var developer = sistema.ObtenerDeveloperoPorId(developerId);
+            var developer = sistema.ObtenerDeveloperPorId(developerId);
             if (developer == null)
             {
                 throw new ArgumentException("El id del Developer no esta registrado");
             }
 
             sistema.AsignarUsuarioTicket(developer, ticketId);
+            sistema.AddTicketsToDeveloper(developer, ticket);
             Console.WriteLine($"\n El Ticket con el ID: {ticketId}  fue asignado al Developer {developer.Nombre}");
 
         }
@@ -50,7 +51,7 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
 
             if (ticketId < 0)
             {
-                throw new ArgumentException("El id del Developer debe ser mayor que 0");
+                throw new ArgumentException("El id del Ticket debe ser mayor que 0");
             }
 
             var tickets = sistema.ObtenerTicketPorId(ticketId);
@@ -102,7 +103,21 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
 
         public void EliminarTicket(SystemTickets sistema)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Dame el id del Ticket: ");
+            int ticketId = int.Parse(Console.ReadLine());
+            if (ticketId < 0)
+            {
+                throw new ArgumentException("El id del Ticket debe ser mayor que 0");
+            }
+
+            var ticket = sistema.ObtenerTicketPorId(ticketId);
+            if (ticket == null)
+            {
+                Console.WriteLine("No hay ningun Ticket");
+                return;
+            }
+            sistema.DeleteTicket(ticketId);
+            Console.WriteLine($"\n El Ticket con el ID: {ticketId} se elimino");
         }
 
         public void MostrarTicket(SystemTickets sistema)

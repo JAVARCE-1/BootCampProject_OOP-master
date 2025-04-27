@@ -14,24 +14,37 @@ namespace Sistem_Ticket_OOP
         private List<Ticket> _ticket = new List<Ticket>();
         private List<Comment> _comment = new List<Comment>();
 
-        public List<Developer> ObtenerDevelopers()
-        {
-            return _developer.ToList();
-        }
-        public Developer ObtenerDeveloperoPorId(int developerId)
+        //obtener datos por ID
+        public Developer ObtenerDeveloperPorId(int developerId)
         {
             return _developer.FirstOrDefault(t => t.Id == developerId)!;
         }
-
-        public List<Ticket> ObtenerTickets()
+        public Comment ObtenerCommentId(int commentId)
         {
-            return _ticket.ToList();
+            return _comment.FirstOrDefault(m => m.Id == commentId)!;
         }
+
         public Ticket ObtenerTicketPorId(int ticketId)
         {
             return _ticket.FirstOrDefault(t => t.Id == ticketId)!;
         }
 
+        //listar clases
+        public List<Developer> ObtenerDevelopers()
+        {
+            return _developer.ToList();
+        }
+        public List<Ticket> ObtenerTickets()
+        {
+            return _ticket.ToList();
+        }
+        public List<Comment> ObtenerComments()
+        {
+            return _comment.ToList();
+        }
+
+
+        //AGREGAR
         public void AgregarComment(Comment comment)
         {
             _comment.Add(comment);
@@ -46,14 +59,8 @@ namespace Sistem_Ticket_OOP
             _ticket.Add(ticket);
         }
 
-        public List<Comment> ObtenerCommentId(int commentId)
-        {
-            return _comment.Where(m => m.Id == commentId).ToList();
-        }
-        public List<Comment> ObtenerComments()
-        {
-            return _comment.ToList();
-        }
+
+        //otros metodos
         public List<Ticket> ObtenerTicketPorUsuarioId(int developerId)
         {
             return _ticket.Where(m => m.AssignedTo.Id == developerId).ToList();
@@ -66,7 +73,7 @@ namespace Sistem_Ticket_OOP
             {
                 ticket.AssignedTo = developer;
                 ticket.UpdateteDate = DateTime.Today;
-                ticket.Status = TicketStatus.Asignado; 
+                ticket.Status = TicketStatus.Asignado;
             }
         }
 
@@ -85,5 +92,18 @@ namespace Sistem_Ticket_OOP
             }
         }
 
+        public void AddCommentTicket(Ticket ticket, Comment comment)
+        {
+            ticket.Comment.Add(comment);
+        }
+        public void AddTicketsToDeveloper(Developer developer, Ticket ticket)
+        {
+            developer.Ticket.Add(ticket);
+        }
+
+        public void DeleteTicket(int ticketId)
+        {
+            _ticket.RemoveAll(p => p.Id == ticketId);
+        }
     }
 }

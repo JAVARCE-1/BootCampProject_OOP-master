@@ -66,42 +66,51 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
             }
         }
 
-        public void MostrarDeveloperPorId(SystemTickets sistema)
+         public void MostrarTicketPorDeveloperId(SystemTickets sistema)
         {
-            throw new NotImplementedException();
-        }
+            Console.WriteLine("-> Dame ID Developer: ");
+            int developerId = Convert.ToInt32(Console.ReadLine());
+            if (developerId < 0)
+            {
+                throw new ArgumentException("El id del Developer debe ser mayor que 0");
+            }
+             
+            var developer = sistema.ObtenerDeveloperPorId(developerId);
 
-        public void ListarDeveloperConTickets(SystemTickets sistema)
-        {
-            var developers = sistema.ObtenerDevelopers();
-
-            // Validar si no hay developers
-            if (developers.Count == 0)
+            if (developer == null)
             {
                 Console.WriteLine("No hay ningun Developer");
                 return;
             }
 
             Console.WriteLine("");
-            Console.WriteLine("== Lista de Developers ==");
+            Console.WriteLine("== Lista de Developers con Tickets ==");
             Console.WriteLine("----------------------------------------------------------------------------------------");
-            Console.WriteLine("ID\tNombre\tRole\t\tSeniority\t\tTicket title\tDescription\tEstado\tPrecio_Alquiler");
+            Console.WriteLine("Id_Developer\tNombre\t\tSeniority\tID_Ticket\tTicket_Title ");
             Console.WriteLine("----------------------------------------------------------------------------------------");
-            foreach (var developer in developers)
+
+            List<Developer> oneDeveloper = new List<Developer> { developer };
+            foreach (var assigned in oneDeveloper)
             {
-                Console.WriteLine($"{developer.Id}\t{developer.Nombre}\t{developer.Role}\t{developer.Seniority}   ");
-                foreach (var numero in developer.Ticket)
+                if (assigned.Ticket.Count > 0)
                 {
-                    Console.WriteLine(numero.Title + " ");
+                    Console.Write($"{assigned.Id}\t\t{assigned.Nombre}\t{assigned.Seniority}   ");
+                    foreach (var ticket in assigned.Ticket)
+                    {
+                        Console.Write($"\t{ticket.Id} \t\t{ticket.Title} ");
+                    }
+                    Console.WriteLine("");
                 }
+
             }
-        }
+         }
 
-        void IDeveloperServicio.ReporteDevelopersConTicketID(SystemTickets sistema)
+ 
+
+        public void ReporteDevelopersConTicketID(SystemTickets sistema)
         {
+            // listar usuarios con los ids de sus tickets
             var developers = sistema.ObtenerDevelopers();
-
-            // Validar si no hay developers
             if (developers.Count == 0)
             {
                 Console.WriteLine("No hay ningun Developer");

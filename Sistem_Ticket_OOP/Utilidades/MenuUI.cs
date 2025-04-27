@@ -66,6 +66,7 @@ namespace Sistem_Ticket_OOP.Utilidades
                 Console.WriteLine("\nSeleccione una opcion: ");
                 Console.WriteLine("1. Agregar un Comment");
                 Console.WriteLine("2. Ver lista de Comment");
+                Console.WriteLine("3. Asignar Comments to Ticket");
                 Console.WriteLine("0. Regresar al menu principal");
 
                 string opcion = Console.ReadLine();
@@ -77,6 +78,9 @@ namespace Sistem_Ticket_OOP.Utilidades
                         break;
                     case "2":
                         servicio.MostrarComment(sistema);
+                        break;
+                    case "3":
+                        servicio.AsignarCommentTickets(sistema);
                         break;
                     case "0":
                         regresar = true;
@@ -169,6 +173,7 @@ namespace Sistem_Ticket_OOP.Utilidades
             bool regresar = false;
             ITicketServicio servicioReporte1 = new TicketServicio();
             IDeveloperServicio servicioReporte2 = new DeveloperServicio();
+            ICommentServicio servicioReporte3 = new CommentServicio();
 
             while (!regresar)
             {
@@ -186,13 +191,13 @@ namespace Sistem_Ticket_OOP.Utilidades
                 switch (opcion)
                 {
                     case "1":
-                        servicioReporte1.ReporteTicketPorDeveloper(sistema);
+                        servicioReporte2.MostrarTicketPorDeveloperId(sistema);
                         break;
                     case "2":
                         servicioReporte1.ReporteTicketPorCreacion(sistema);
                         break;
                     case "3":
-                        //servicioReporte1.(sistema);
+                        servicioReporte3.ReporteCommentxTickets(sistema);
                         break;
                     case "4":
                         servicioReporte2.ReporteDevelopersConTicketID(sistema);

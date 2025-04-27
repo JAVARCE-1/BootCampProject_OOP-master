@@ -10,7 +10,7 @@ namespace Sistem_Ticket_OOP.Modelos.Servicios
     {
         void AgregarDeveloper(SystemTickets sistema);
         void MostrarDeveloper(SystemTickets sistema);
-        void MostrarDeveloperPorId(SystemTickets sistema);
+        void MostrarTicketPorDeveloperId(SystemTickets sistema);
 
         void ReporteDevelopersConTicketID(SystemTickets sistema);
     }
